@@ -53,7 +53,7 @@ exports.deleteAccount = async (req, res) => {
     try {
         const account = await getAccountById(id);
 
-        if (!account || account.userId !== req.useId) {
+        if (!account || account.userId !== req.userId) {
             return res.status(403).json({ error: 'Unauthorized or account not found' });
         }
 

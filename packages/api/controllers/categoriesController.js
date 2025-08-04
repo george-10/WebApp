@@ -25,7 +25,7 @@ exports.getCategoriesByAccount = async (req, res) => {
 // Add a new category
 exports.createCategory = async (req, res) => {
     const { name, type, accountId } = req.body;
-
+    console.log("accountId:", accountId, "name:", name, "type:", type);
     try {
         const account = await getAccountById(accountId);
         if (!account || account.userId !== req.userId) {

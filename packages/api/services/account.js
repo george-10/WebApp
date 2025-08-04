@@ -40,17 +40,19 @@ async function getAccountById(accountId){
     }
 }
 
-async function deleteAccount(accountId){
-    try{
-
-        const id = parseInt(accountId);
-        const account =await prisma.account.delete({where: {id}});
-        return  account;
-    }catch(err){
-        console.error("Error deleting account:",err);
-        throw new Error(err);
-    }
+async function deleteAccount(accountId) {
+  try {
+    const id = parseInt(accountId);
+    await prisma.transaction.deleteMany({ where: { accountId: id } });
+    await prisma.category.deleteMany({ where: { accountId: id } });
+    const account = await prisma.account.delete({ where: { id } });
+    return account;
+  } catch (err) {
+    console.error("Error deleting account:", err);
+    throw new Error("Failed to delete account");
+  }
 }
+
 
 async function updateAccount(accountId,type,name,balance){
     try{

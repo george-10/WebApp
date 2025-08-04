@@ -6,6 +6,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
+const cors = require('cors');
 //Routes imports
 const authRoutes = require('./routes/authRoutes');
 const accountRoutes = require('./routes/accountRoutes');
@@ -34,10 +35,16 @@ const swaggerOptions = {
             }
         }
     },
+
     apis: ['./routes/*.js'],
 };
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+//CORS
+app.use(cors({
+    origin: 'http://localhost:4000', 
+    credentials: true, 
+}));
 //Logging
 app.use(logger('dev'));
 //Routes
