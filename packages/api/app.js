@@ -6,8 +6,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
+//Routes imports
 const authRoutes = require('./routes/authRoutes');
 const accountRoutes = require('./routes/accountRoutes');
+const categoryRoutes = require('./routes/categoriesRoutes');
+
 dotenv.config();
 var app = express();
 app.use(express.json());
@@ -38,6 +41,7 @@ app.use(logger('dev'));
 //Routes
 app.use('/auth', authRoutes);
 app.use('/accounts', accountRoutes);
+app.use('/category', categoryRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

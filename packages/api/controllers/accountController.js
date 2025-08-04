@@ -6,7 +6,7 @@ const {
     updateAccount
 } = require('../services/account'); // Adjust path if necessary
 
-// Get all accounts for logged-in user
+// Get all accounts for  user
 exports.getAccounts = async (req, res) => {
     try {
         const userId = req.userId;

@@ -23,7 +23,6 @@ model User {
   updatedAt    DateTime @updatedAt
 
   accounts     Account[]
-  categories   Category[]
   transactions Transaction[]
   budgets      Budget[]
 }
@@ -38,6 +37,7 @@ model Account {
 
   user         User          @relation(fields: [userId], references: [id])
   transactions Transaction[]
+  categories   Category[]
 }
 
 model Transaction {
@@ -58,12 +58,12 @@ model Transaction {
 
 model Category {
   id        Int             @id @default(autoincrement())
-  userId    Int
+  accountId Int
   name      String
   type      TransactionType
   createdAt DateTime        @default(now())
 
-  user         User          @relation(fields: [userId], references: [id])
+  account      Account       @relation(fields: [accountId], references: [id])
   transactions Transaction[]
   budgets      Budget[]
 }
