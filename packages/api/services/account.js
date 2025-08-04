@@ -55,12 +55,13 @@ async function deleteAccount(accountId){
 async function updateAccount(accountId,type,name,balance){
     try{
         const id = parseInt(accountId);
+        console.log("Updating account with ID:", id,"new balance:", balance);
         const updated = await prisma.account.update({
             where: {id},
             data: {
                 name,
                 type,
-                balance
+                balance: parseFloat(balance)
             }
         })
         return updated;

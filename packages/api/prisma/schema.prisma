@@ -24,7 +24,6 @@ model User {
 
   accounts     Account[]
   transactions Transaction[]
-  budgets      Budget[]
 }
 
 model Account {
@@ -65,20 +64,9 @@ model Category {
 
   account      Account       @relation(fields: [accountId], references: [id])
   transactions Transaction[]
-  budgets      Budget[]
 }
 
-model Budget {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  categoryId  Int
-  amountLimit Decimal
-  startDate   DateTime
-  endDate     DateTime
 
-  user     User     @relation(fields: [userId], references: [id])
-  category Category @relation(fields: [categoryId], references: [id])
-}
 
 enum AccountType {
   cash

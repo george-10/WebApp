@@ -10,6 +10,8 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const accountRoutes = require('./routes/accountRoutes');
 const categoryRoutes = require('./routes/categoriesRoutes');
+const transactionRoutes = require('./routes/transactionRoutes');
+
 
 dotenv.config();
 var app = express();
@@ -42,6 +44,7 @@ app.use(logger('dev'));
 app.use('/auth', authRoutes);
 app.use('/accounts', accountRoutes);
 app.use('/category', categoryRoutes);
+app.use('/transactions', transactionRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
