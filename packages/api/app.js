@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
-
+const accountRoutes = require('./routes/accountRoutes');
 dotenv.config();
 var app = express();
 app.use(express.json());
@@ -19,6 +19,15 @@ const swaggerOptions = {
             title: 'API Docs',
             version: '1.0.0',
         },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT'
+                }
+            }
+        }
     },
     apis: ['./routes/*.js'],
 };
@@ -28,6 +37,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger('dev'));
 //Routes
 app.use('/auth', authRoutes);
+app.use('/accounts', accountRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
