@@ -21,8 +21,8 @@ export default function LoginPage() {
 
       localStorage.setItem('token', res.data.token);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed');
+    } catch (err) {
+      setError('Login failed');
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ export default function LoginPage() {
           <p className="text-red-500 text-sm mt-4 text-center">{error}</p>
         )}
         <p className="text-center text-sm text-gray-500 mt-6">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <a href="/signup" className="text-blue-600 hover:underline">Sign up</a>
         </p>
       </div>

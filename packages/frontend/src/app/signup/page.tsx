@@ -23,8 +23,8 @@ export default function SignupPage() {
 
       localStorage.setItem('token', res.data.token);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Signup failed');
+    } catch (err) {
+      setError('Signup failed');
     } finally {
       setLoading(false);
     }
