@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "start" :"docker compose up -d",
+    "stop" : "docker compose down"
   },
   "dependencies": {},
   "devDependencies": {

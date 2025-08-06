@@ -2,7 +2,7 @@ import axios from 'axios';
 import { isTokenExpired } from './token';
 
 const instance = axios.create({
-  baseURL:  process.env.NEXT_PUBLIC_API_BASE_URL, // Replace with your backend URL
+  baseURL:  process.env.NEXT_PUBLIC_API_BASE_URL, 
 });
 
 // Request interceptor

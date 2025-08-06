@@ -42,7 +42,7 @@ const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //CORS
 app.use(cors({
-    origin: 'http://localhost:4000', 
+    origin: true, 
     credentials: true, 
 }));
 //Logging
